@@ -38,13 +38,17 @@
                 </strong></em>
                 <p>Shot Taken</p>
                 <p>Score</p>
+                <button >SHOOT1</button>
+
               </td>
               <td className="tdFlag">
                 <em><strong>Hornets
-                  <img className="image2" src="Hornets.png" />
+                  <td><img className="image2" src="Hornets.png" /></td>
                 </strong></em>
-                <p>Shot Taken</p>
-                <p>Score</p>
+                <p>Shot Taken: </p>
+                <p>Score </p>
+                <p> <button >SHOOT2</button>
+                </p>
               </td>
             </tr>
           </table>
@@ -52,7 +56,6 @@
       )
 
     }
-
 
     const element = (
       <div>
@@ -71,6 +74,28 @@
 
       document.getElementById('root')
     )
+    class tdFlag extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          count: 0
+        };
+      }
+      render() {
+        return <div>
+          <button>SHOOT1:{this.state.count}</button>
+
+        </div>;
+      }
+
+
+      handleShoot(event) {
+        this.setstate((state, props) => (
+          { SHOOT1: state.count + 1 }
+        ))
+      }
+    }
   </script>
 </body>
 

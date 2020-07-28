@@ -5,12 +5,10 @@
 .image2{
     height: 100px;
     width: 100px;
-    margin-left: 200px;
+  
 } 
 
 .tdFlag{
-    width: 50%;
-    text-align: center;
+    width: 10%;
+    margin: 0em;
 }
-
-/*5595*/
