@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>React Sports Game</title>
+  <title>Sports-Game</title>
   <link rel="stylesheet" href="./style.css">
 </head>
+<script src="Sportclass.js"></script>
 
 <body>
   <!-- include an element for ReactDOM to attach our React-generated elements to -->
@@ -28,44 +29,41 @@
     function App(props) {
 
       return (
-        <div>
+        < div >
           <h1>Welcome to the Sports Game starter!</h1>
-          <table>
-            <tr>
-              <td className="tdFlag">
-                <em><strong>LasVegas
-                  <img className="image1" src="LasVegas.png" />
-                </strong></em>
-                <p>Shot Taken</p>
-                <p>Score</p>
-                <button >SHOOT1</button>
+          <span>
+            <strong className="tdFlag">Las Vegas</strong><img className="image1" src="LasVegas.png" />
+            <p></p>
+            <label>Shot Taken: </label><span></span>
+            <p></p>
+            <label>Score : </label><span> </span>
+            <p></p>
+            <button className="shoot1">SHOOT1</button>
+          </span>
+          <span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p></p>
+          </span>
+          <span>
+            <strong className="tdFlag">Hornets</strong><img className="image2" src="Hornets.png" />
+            <p></p>
+            <label>Shot Taken: </label><span> </span>
+            <p></p>
+            <label>Score : </label><span></span>
+            <p></p>
+            <button className="shoot2">SHOOT2</button>
+          </span>
 
-              </td>
-              <td className="tdFlag">
-                <em><strong>Hornets
-                  <td><img className="image2" src="Hornets.png" /></td>
-                </strong></em>
-                <p>Shot Taken: </p>
-                <p>Score </p>
-                <p> <button >SHOOT2</button>
-                </p>
-              </td>
-            </tr>
-          </table>
+        </ div>
+      )
+      const element = (
+        <div>
+          <h1></h1>
+          <em ><strong></strong></em>
+          <em><strong></strong></em>
         </div >
       )
 
     }
-
-    const element = (
-      <div>
-        <h1></h1>
-        <em ><strong></strong></em>
-        <em><strong></strong></em>
-      </div >
-    )
-
-
 
     // Render the App
     ReactDOM.render(
@@ -74,28 +72,7 @@
 
       document.getElementById('root')
     )
-    class tdFlag extends React.Component {
-      constructor(props) {
-        super(props);
 
-        this.state = {
-          count: 0
-        };
-      }
-      render() {
-        return <div>
-          <button>SHOOT1:{this.state.count}</button>
-
-        </div>;
-      }
-
-
-      handleShoot(event) {
-        this.setstate((state, props) => (
-          { SHOOT1: state.count + 1 }
-        ))
-      }
-    }
   </script>
 </body>
 
