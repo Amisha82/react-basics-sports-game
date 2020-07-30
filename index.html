@@ -8,7 +8,6 @@
   <title>Sports-Game</title>
   <link rel="stylesheet" href="./style.css">
 </head>
-<script src="Sportclass.js"></script>
 
 <body>
   <!-- include an element for ReactDOM to attach our React-generated elements to -->
@@ -19,57 +18,81 @@
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
   <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="Sportclass.js" type="text/babel"></script>
 
   <!-- include our JS+JSX for the React Appliccation -->
   <script type="text/babel">
 
     // An App component under which all other components will be added
+    class Team extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          Shottaken: 0,
+          Score: 0
+
+        }
+      }
 
 
+      handleShoot = () => {
+        let Score = this.state.Score
+
+        if (Math.random() > 0.5) {
+          Score += 1
+        }
+        this.setState((state, props) => ({
+          Shottaken: state.Shottaken + 1,
+          Score: Score,
+        }))
+      }
+
+
+      render() {
+        return (
+          <div id="team">
+            <h3>{this.props.name}</h3>
+            <div className="identity">
+              <img src={this.props.logo} alt={this.props.name} height="300px" width="300px" /></div>
+            <div>
+              <strong>Shot Taken: </strong>{this.state.Shottaken}
+            </div>
+            <div>
+              <strong>Score: </strong>{this.state.Score}
+            </div>
+
+
+            <button onClick={this.handleShoot}>SHOOT</button>
+          </div>
+
+        )
+      }
+    }
     function App(props) {
 
       return (
-        < div >
+        <div id="App">
           <h1>Welcome to the Sports Game starter!</h1>
-          <span>
-            <strong className="tdFlag">Las Vegas</strong><img className="image1" src="LasVegas.png" />
-            <p></p>
-            <label>Shot Taken: </label><span></span>
-            <p></p>
-            <label>Score : </label><span> </span>
-            <p></p>
-            <button className="shoot1">SHOOT1</button>
-          </span>
-          <span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p></p>
-          </span>
-          <span>
-            <strong className="tdFlag">Hornets</strong><img className="image2" src="Hornets.png" />
-            <p></p>
-            <label>Shot Taken: </label><span> </span>
-            <p></p>
-            <label>Score : </label><span></span>
-            <p></p>
-            <button className="shoot2">SHOOT2</button>
-          </span>
+          <div className="stats">
+            <Team name="Las Vegas" logo="LasVegas.png" />
 
-        </ div>
-      )
-      const element = (
-        <div>
-          <h1></h1>
-          <em ><strong></strong></em>
-          <em><strong></strong></em>
-        </div >
+
+            <div className="verses">
+              <h1>VS</h1>
+            </div>
+
+            <Team name="Hornets" logo="Hornets.png" />
+
+          </div>
+        </div>
+
       )
 
     }
 
-    // Render the App
+
     ReactDOM.render(
-
-      <App name1="LasVegas" />,
-
+      <App />,
       document.getElementById('root')
     )
 

@@ -1,46 +1,15 @@
-.image1{
-    height: 80px;
-    width: 100px;
-    margin-top:100px;
+.hclass{
+    margin-left: 500px;
+    margin-top: -40px;
 }
-.image2{
-    height: 100px;
-    width: 100px;
-  
-} 
-
-.tdFlag{
-    width: 10%;
-    margin: 0em;
+#team{
+    margin-left: 20px;
 }
-.move2{
-    margin-left: 200px;
+.stats{
+    display:flex ;
+    flex-direction: row;
 }
-
-/*<table>
-            <tr>
-              <td className="tdFlag">
-                <em><strong>LasVegas
-                  <img className="image1" src="LasVegas.png" />
-                </strong></em>
-                <p>Shot Taken</p>
-                <p>Score</p>
-                <button >SHOOT1</button>
-
-              </td>
-              <td className="tdFlag">
-                <em><strong>Hornets
-                  <td><img className="image2" src="Hornets.png" /></td>
-                </strong></em>
-                <p>Shot Taken:</p>
-                <p>Score </p>
-                <p> <button >SHOOT2</button>
-                </p>
-              </td>
-            </tr>
-          </table>
-        </div >
-      )
-
-    }
-*/
+.verses{
+    font-size: 5em;
+    color: lime;
+}
