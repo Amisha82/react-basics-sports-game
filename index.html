@@ -32,14 +32,22 @@
           Score: 0
 
         }
+        this.shotSound = new Audio("shottaken.mp3")
+        this.scoreSound = new Audio("score.mp3")
       }
 
 
       handleShoot = () => {
         let Score = this.state.Score
+        this.shotSound.play()
 
         if (Math.random() > 0.5) {
           Score += 1
+
+          setTimeout(() => {
+            this.scoreSound.play()
+          }, 100)
+
         }
         this.setState((state, props) => ({
           Shottaken: state.Shottaken + 1,
@@ -49,6 +57,17 @@
 
 
       render() {
+        let shotPercentageDiv
+
+        if (this.state.Shottaken) {
+          const shotPercentage = Math.round((this.state.Score / this.state.Shottaken) * 100)
+          shotPercentageDiv = (
+            <div>
+              <strong>Shooting % :{shotPercentage} </strong>
+            </div>
+
+          )
+        }
         return (
           <div id="team">
             <h3>{this.props.name}</h3>
@@ -61,6 +80,8 @@
               <strong>Score: </strong>{this.state.Score}
             </div>
 
+            {shotPercentageDiv}
+
 
             <button onClick={this.handleShoot}>SHOOT</button>
           </div>
@@ -68,22 +89,57 @@
         )
       }
     }
-    function App(props) {
 
+    function Game(props) {
       return (
-        <div id="App">
-          <h1>Welcome to the Sports Game starter!</h1>
+        <div className="Game">
+          <h1>Welcome to {props.venue}</h1>
           <div className="stats">
-            <Team name="Las Vegas" logo="LasVegas.png" />
+            <Team
+              name={props.visitingTeam.name}
+              logo={props.visitingTeam.logo} />
 
 
             <div className="verses">
               <h1>VS</h1>
             </div>
 
-            <Team name="Hornets" logo="Hornets.png" />
+            <Team
+              name={props.homeTeam.name} logo={props.homeTeam.logo} />
 
           </div>
+        </div>
+      )
+    }
+    function App(props) {
+      const Las = {
+        name: "LasVegas",
+        logo: "LasVegas.png"
+      }
+      const Hor = {
+        name: "Hornets",
+        logo: "Hornets.png"
+      }
+      const Drag = {
+        name: "Dragon",
+        logo: "dragon.png"
+      }
+      const Ant = {
+        name: "Antlers",
+        logo: "antlers.png"
+      }
+
+      return (
+        <div className="App">
+          <Game
+            venue="Roosevelt Park 124 Lane"
+            homeTeam={Hor}
+            visitingTeam={Las} />
+          <Game
+            venue="Hana Road Street 12"
+            homeTeam={Drag}
+            visitingTeam={Ant} />
+
         </div>
 
       )
