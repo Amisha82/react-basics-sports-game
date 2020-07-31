@@ -13,3 +13,9 @@
     font-size: 5em;
     color: lime;
 }
+.ScoreBoard{
+    background-color: mediumaquamarine;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
